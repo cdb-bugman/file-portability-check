@@ -1,6 +1,13 @@
 
 * OVERVIEW
 
+Compilation: gcc filestandardcheck.c -o fscheck
+Usage: fscheck -s [STANDARDS...] -d [optional: DELIMITER] [INPUT FILES...]
+
+Works well with find and xargs to verify a directory. Example:
+
+find . | xargs -i fscheck -s GEMDOS,DECTAPE {}
+
 Portability Checker
 
 This utility accepts paths to files or directories and aids the user
