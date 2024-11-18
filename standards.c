@@ -22,7 +22,7 @@ struct standard_definition {
 
 struct standard_definition GLOBAL_STANDARDS[] =
   {
-    {"POSIX", "/abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.-", NA, NA, 17, 255, NA, 1, false, WHITELIST },
+    {"POSIX", "/abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.-", NA, NA, 17, 255, true, true, true, WHITELIST },
     {"FAT32", NA, 4294967296, NA, NA, 32767, NA, false, false, NA },
     {"AdvFS", NA, 17592186044416, NA, 255, NA, true, true, true, BLACKLIST}, 
     {"APFS", NA, 9223372036854775808, 9223372036854775808, 255, NA, false, true, true, BLACKLIST}, 
@@ -97,6 +97,7 @@ struct standard_definition GLOBAL_STANDARDS[] =
     {"Xiafs", NA, 67108864, NA, 248, NA, true, true, true, BLACKLIST}, 
     {"ZFS", NA, 18446744073709551615, NA, 255, NA, true, true, true, BLACKLIST}, 
     {"TESTING", "/abcdefgh", 1, 1, 1, 1, false, false, false, BLACKLIST},
+    {"XOPEN", NA, NA, NA, 255, 1023, true, true, true, WHITELIST},
     {NULL},
   };
 
