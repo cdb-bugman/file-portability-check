@@ -1,0 +1,141 @@
+
+* OVERVIEW
+
+Portability Checker
+
+This utility accepts paths to files or directories and aids the user
+in dealing with portability problems within the paths of those files
+or directories. The identifiable problems include:
+
+- Exceeding total path length limits for standard/filesystem
+
+  - Example: Alerts user if standard is XOPEN and path length > 1023
+  - Example: Alerts user if filesystem is FAT32 and path length > 32,760
+
+- Exceeding path component length limits for standard/filesystem
+
+  - Example: Alerts user if standard is XOPEN and component length > 255
+  - Example: Alerts user if filesystem is FAT32 and component length > 255
+
+- Exceeding file size limits for filesystem 
+
+  - Example: Alerts user if target is FAT32 and file size > 4GB
+  - Example: Alerts user if target is a 32bit OS and file size > 2GB
+    Note: While 'Large File Support' exists, many legacy programs
+    fail to implement it and not every 32 bit OS has it.
+
+- Containing unsuitable characters for standard or OS.
+
+  - Example: Alert user if standard is POSIX and path contains:
+    anything other than alphanumeric chars, "_", ".", and "-",
+  - Example: Alert user if file system is NTFS and file name contains:
+    <,>,:,",/,\,|,?,*
+
+- Too many files in directory for filesystem.
+
+  - Example: Alerts user if over 4,294,967,296 files are in NTFS
+    directory. 
+
+
+It outputs in a delimiter-seperated value format and the user
+may specify the delimiter. The intention is for users to solve these
+problems in a way that fits their needs by using this tool to
+identify and categorize problematic files. This tool does not attempt
+to solve any identified problems on its own.
+
+Returns 0 if no problems were found, returns 1 if there was any
+problem at all.
+
+Standards available:
+
+AdvFS
+APFS
+Bcachefs
+BeeGFS
+BFS
+Bluestore
+Btrfs
+CBMDOS
+CP/M
+DECTAPE
+ElektronikaBK
+exFAT
+ext
+ext2
+ext3
+ext4
+F2FS
+FAT
+FAT12
+FAT16
+FAT16B
+FAT16X
+FAT32
+FAT32X
+FATX
+FFS
+GECDOS_FILING_EXTENDED
+GEMDOS
+GFS2
+GFS
+GPFS
+HAMMER
+HPFS
+IBM_SFS
+ISO_9660_1988_LEVEL1
+ISO_9660_1988_LEVEL2
+JFS
+JFS1
+Joilet
+Level-D
+Lustre
+MFS
+MicroDOS
+Minix_V1_FS
+Minix_V2_FS
+Minix_V3_FS
+NILFS
+NOVA
+NSS
+NTFS
+NWFS
+OCFS
+OCFS2
+ODS-5
+QFS
+ReFS
+ReiserFS
+Reiser4
+Rock_Ridge
+RT-11
+SquashFS
+UDF
+UFS1
+UFS2
+V6FS
+V7FS
+VMFS2
+VMFS3
+VxFS
+XFS
+Xiafs
+ZFS
+
+* PROBLEM DEFINITION:
+
+A problem I've noticed: When migrating data between different
+computers, there's times when it doesn't "just work."
+
+And when it doesn't "just work", it's a big situation to figure out
+why. Depending on what and how you're transferring, you may not know
+anything is wrong until it hits an edge case while you were waiting
+for it overnight, leaving you a dissapointing message in the morning.
+Even worse, the data may not copy correctly!
+
+Anecdote: When I was copying over some games via USB to a computer,
+some of them didn't launch. I just didn't know why. The problem: the
+USB was formatted with FAT32 and the files over 4GB did not get fully
+copied. It took quite awhile to figure that out; I was unaware of the
+limitations of FAT32. If I had this utility, it would've saved me
+plenty of time and grief.
+
